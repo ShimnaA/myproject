@@ -5,7 +5,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 @api_view(['GET','POST'])
-def article_list(request):
+def article_list(request, format=None):
     #List all Article or create a new article
     if request.method == 'GET':
         articles = Article.objects.all()
@@ -20,7 +20,7 @@ def article_list(request):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET','PUT','DELETE'])
-def article_detail(request, pk):
+def article_detail(request, pk, format=None):
     #Retreive, update, delete an article
 
         try:
